@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(python tests:*)",
+      "Bash(python3:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(PYTHONPATH=/Users/a1028918/Documents/vibe-dev/agentic-researcher python tests/test_system.py)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

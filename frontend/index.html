@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCS Competitive Intelligence</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>TCS Competitive Intelligence</h1>
+            <p class="subtitle">AI Narrative Analysis of IT Services Competitors</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Research Configuration Panel -->
+            <section class="research-panel" id="researchPanel">
+                <h2>Configure Research</h2>
+
+                <div class="form-group">
+                    <label for="competitors">Select Competitors:</label>
+                    <div class="competitors-grid" id="competitorsGrid">
+                        <!-- Competitors will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="researchFocus">Research Focus:</label>
+                    <input type="text" id="researchFocus" value="AI narrative and strategic initiatives" placeholder="Enter research focus">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="maxAge">Max Age (days):</label>
+                        <input type="number" id="maxAge" value="60" min="1" max="365">
+                    </div>
+                    <div class="form-group">
+                        <label for="minSources">Min Sources:</label>
+                        <input type="number" id="minSources" value="3" min="1" max="10">
+                    </div>
+                </div>
+
+                <div class="cache-controls">
+                    <h3>Cache Management</h3>
+                    <div class="cache-info" id="cacheInfo">
+                        <p>Loading cache information...</p>
+                    </div>
+                    <div class="cache-actions">
+                        <button class="btn-secondary" onclick="loadCacheInfo()">Refresh Cache Info</button>
+                        <button class="btn-secondary" onclick="clearAllCache()">Clear All Cache</button>
+                        <button class="btn-secondary" onclick="cleanupExpiredCache()">Cleanup Expired</button>
+                    </div>
+                </div>
+
+                <button class="btn-primary" id="startResearchBtn" onclick="startResearch()">
+                    Start Research
+                </button>
+            </section>
+
+            <!-- Progress Panel -->
+            <section class="progress-panel" id="progressPanel" style="display: none;">
+                <h2>Research Progress</h2>
+
+                <div class="session-info">
+                    <span class="session-id">Session: <span id="sessionId"></span></span>
+                    <span class="session-status">Status: <span id="sessionStatus"></span></span>
+                </div>
+
+                <div class="agents-progress">
+                    <div class="agent-card">
+                        <h3>Deep Research Agent</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="deepResearchProgress"></div>
+                        </div>
+                        <p class="agent-task" id="deepResearchTask">Initializing...</p>
+                    </div>
+
+                    <div class="agent-card">
+                        <h3>Synthesizer Agent</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="synthesizerProgress"></div>
+                        </div>
+                        <p class="agent-task" id="synthesizerTask">Waiting...</p>
+                    </div>
+                </div>
+
+                <div class="progress-messages">
+                    <h4>Progress Messages</h4>
+                    <div class="messages-container" id="progressMessages"></div>
+                </div>
+            </section>
+
+            <!-- Results Panel -->
+            <section class="results-panel" id="resultsPanel" style="display: none;">
+                <h2>Executive Report</h2>
+
+                <div class="report-header">
+                    <div class="report-meta">
+                        <span>Generated: <span id="reportDate"></span></span>
+                        <span>Sources: <span id="sourcesCount"></span></span>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-secondary" onclick="exportReport('pdf')">Export PDF</button>
+                        <button class="btn-secondary" onclick="exportReport('json')">Export JSON</button>
+                    </div>
+                </div>
+
+                <div class="executive-summary">
+                    <h3>Executive Summary</h3>
+                    <div class="summary-content" id="executiveSummary"></div>
+                </div>
+
+                <div class="insights-section">
+                    <h3>Key Insights</h3>
+                    <div class="insights-grid" id="insightsGrid"></div>
+                </div>
+
+                <div class="opportunities-section">
+                    <h3>Market Opportunities</h3>
+                    <ul class="opportunities-list" id="opportunitiesList"></ul>
+                </div>
+
+                <div class="recommendations-section">
+                    <h3>Strategic Recommendations</h3>
+                    <ul class="recommendations-list" id="recommendationsList"></ul>
+                </div>
+
+                <div class="competitor-analysis">
+                    <h3>Competitor Analysis</h3>
+                    <div class="competitors-table" id="competitorsTable"></div>
+                </div>
+            </section>
+
+            <!-- Error Panel -->
+            <section class="error-panel" id="errorPanel" style="display: none;">
+                <h2>Error</h2>
+                <div class="error-message" id="errorMessage"></div>
+                <button class="btn-primary" onclick="resetInterface()">Try Again</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
