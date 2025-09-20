@@ -8,7 +8,7 @@ on:
 
 jobs:
   tests:
-    name: Python Tests
+    name: Python Lint & Tests
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -31,6 +31,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Python lint (ruff)
+        run: ruff check --output-format=github .
+
       - name: Run tests
         env:
           # Use repo secret if provided, else a dummy value to satisfy config
@@ -38,3 +41,22 @@ jobs:
           PYTHONUNBUFFERED: "1"
         run: pytest -q
 
+  frontend-lint:
+    name: Frontend Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install frontend deps
+        working-directory: frontend
+        run: npm install --no-audit --no-fund
+
+      - name: ESLint
+        working-directory: frontend
+        run: npm run lint
